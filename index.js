@@ -19,8 +19,10 @@ const fileName = "index.html";
 
 const myTeamArray = [];
 
-// Questions Array for future Prompts
-const questions = [
+// Manager Questions
+const manager = () => {  
+
+    inquirer.prompt ([
     {
         type: "input",
         message: "Enter Team Manager Name:",
@@ -41,50 +43,42 @@ const questions = [
         message: "Enter Managers Office Number:",
         name: "officenumber"
     },
-    {
-        type: "list",
-        message: "Select Employees role (Engineer or Intern):",
-        choices: ["Engineer", "Intern"]
-    },
-    {
-        type: "input",
-        message: "Enter:",
-        name: "tests"
-    },
-    {
-        type: "list",
-        message: "Select a license",
-        name: "license",
-        choices: [
-            "MIT",
-            "Apache",
-            "Eclipse Public",
-            "GNU General Public",
-            "Boost Software",
-        ]
-    },
-    {
-        type: "input",
-        message: "Enter GITHUB user name:",
-        name: "username"
-    },
-    {
-        type: "input",
-        message: "Enter email address:",
-        name: "email"
-    }
-];
+]);
+};
 
-// function to write README file
-function writeToFile(fileName, data) {
-    
-    // Create Markdown from data
-    const readme = generateMarkdown(data);
-    
-    // Write Markdown file
-    // If successful, Success! will display in console
-    fs.writeFile(fileName, readme, function (err) {
-        if (err) throw err;
-        console.log("Success!");
-    });
-}
+    // {
+    //     type: "list",
+    //     name: "role",
+    //     message: "Select Employee role (Engineer or Intern):",
+    //     choices: ["Engineer", "Intern"]
+    // },
+    // {
+    //     type: "input",
+    //     message: "Enter:",
+    //     name: "tests"
+    // },
+    // {
+    //     type: "list",
+    //     message: "Select a license",
+    //     name: "license",
+    //     choices: [
+    //         "MIT",
+    //         "Apache",
+    //         "Eclipse Public",
+    //         "GNU General Public",
+    //         "Boost Software",
+    //     ]
+    // },
+    // {
+    //     type: "input",
+    //     message: "Enter GITHUB user name:",
+    //     name: "username"
+    // },
+    // {
+    //     type: "input",
+    //     message: "Enter email address:",
+    //     name: "email"
+    // }
+
+
+manager();
