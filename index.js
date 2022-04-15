@@ -19,8 +19,12 @@ const fileName = "index.html";
 
 const myTeamArray = [];
 
-// Manager Questions
-const manager = () => {  
+
+//Main function to run team builder
+function myTeam () {
+
+// Function to trigger manager prompts
+function manager () {  
 
     inquirer.prompt ([
     {
@@ -45,6 +49,47 @@ const manager = () => {
     },
 ]);
 };
+
+// Function to Select Employee by Role
+//Then trigger employee prompts
+function employee () {
+    inquirer.prompt([{
+      type: "list",
+      message: "Select Employee role (Engineer or Intern):",
+      name: "role",
+      choices: ["Engineer", "Intern", "No Additional Employees"]
+    }]).then(function (input) {
+      switch(input.role) {
+        case "Engineer":
+          addengineer();
+          break;
+        case "Intern":
+          addIntern();
+          break;
+
+        default:
+          htmlBuilder();
+      }
+    })
+  }
+}
+
+    // {
+    //     type: "input",
+    //     message: "Enter Managers Unique ID:",
+    //     name: "id"
+    // },
+    // {
+    //     type: "input",
+    //     message: "Enter Managers Email Address:",
+    //     name: "email"
+    // },
+    // {
+    //     type: "input",
+    //     message: "Enter Managers Office Number:",
+    //     name: "officenumber"
+    // },
+
 
     // {
     //     type: "list",
@@ -80,5 +125,5 @@ const manager = () => {
     //     name: "email"
     // }
 
+  
 
-manager();
