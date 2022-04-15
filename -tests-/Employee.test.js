@@ -50,3 +50,5 @@ const Employee = require('../lib/Employee');
     expect(employee.getRole()).toEqual("Employee");
 
   });
+
+  
