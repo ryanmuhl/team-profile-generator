@@ -20,9 +20,6 @@ const fileName = "index.html";
 const myTeamArray = [];
 
 
-//Main function to run team builder
-function myTeam () {
-
 // Function to trigger manager prompts
 function manager () {  
 
@@ -48,9 +45,30 @@ function manager () {
         name: "officenumber"
     },
 ]);
+
 };
 
-function engineer () {  
+// Function to Select Employee by Role
+//Then trigger employee prompts
+const employee = () => {
+    inquirer.prompt([{
+      type: "list",
+      message: "Select Employee role (Engineer or Intern):",
+      name: "role",
+      choices: ["Engineer", "Intern", "No Additional Employees"]
+    }]).then(function (input) {
+      switch(input.role) {
+        case "Engineer":
+          engineer();
+          break;
+        case "Intern":
+          intern();
+          break;
+      }
+    })
+  }
+
+const engineer = () => {  
 
     inquirer.prompt ([
     {
@@ -76,7 +94,7 @@ function engineer () {
 ]);
 };
 
-function intern () {  
+const intern = () => {  
 
     inquirer.prompt ([
     {
@@ -102,29 +120,13 @@ function intern () {
 ]);
 };
 
-// Function to Select Employee by Role
-//Then trigger employee prompts
-function employee () {
-    inquirer.prompt([{
-      type: "list",
-      message: "Select Employee role (Engineer or Intern):",
-      name: "role",
-      choices: ["Engineer", "Intern", "No Additional Employees"]
-    }]).then(function (input) {
-      switch(input.role) {
-        case "Engineer":
-          engineer();
-          break;
-        case "Intern":
-          intern();
-          break;
-      }
-    })
-  }
-  employee ()
-}
 
-myTeam ();
+manager().then(employee)
+// .catch(err => {
+//     console.log(err);
+//      });
+
+
 
     
 
