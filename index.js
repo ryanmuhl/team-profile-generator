@@ -50,6 +50,58 @@ function manager () {
 ]);
 };
 
+function engineer () {  
+
+    inquirer.prompt ([
+    {
+        type: "input",
+        message: "Enter Engineer Name:",
+        name: "name"
+    },
+    {
+        type: "input",
+        message: "Enter Engineeer ID:",
+        name: "id"
+    },
+    {
+        type: "input",
+        message: "Enter Engineer Email:",
+        name: "email"
+    },
+    {
+        type: "input",
+        message: "Enter Engineer GitHub:",
+        name: "github"
+    },
+]);
+};
+
+function intern () {  
+
+    inquirer.prompt ([
+    {
+        type: "input",
+        message: "Enter Intern Name:",
+        name: "name"
+    },
+    {
+        type: "input",
+        message: "Enter Intern ID:",
+        name: "id"
+    },
+    {
+        type: "input",
+        message: "Enter Intern Email:",
+        name: "email"
+    },
+    {
+        type: "input",
+        message: "Enter Intern School:",
+        name: "school"
+    },
+]);
+};
+
 // Function to Select Employee by Role
 //Then trigger employee prompts
 function employee () {
@@ -61,69 +113,20 @@ function employee () {
     }]).then(function (input) {
       switch(input.role) {
         case "Engineer":
-          addengineer();
+          engineer();
           break;
         case "Intern":
-          addIntern();
+          intern();
           break;
-
-        default:
-          htmlBuilder();
       }
     })
   }
+  employee ()
 }
 
-    // {
-    //     type: "input",
-    //     message: "Enter Managers Unique ID:",
-    //     name: "id"
-    // },
-    // {
-    //     type: "input",
-    //     message: "Enter Managers Email Address:",
-    //     name: "email"
-    // },
-    // {
-    //     type: "input",
-    //     message: "Enter Managers Office Number:",
-    //     name: "officenumber"
-    // },
+myTeam ();
 
-
-    // {
-    //     type: "list",
-    //     name: "role",
-    //     message: "Select Employee role (Engineer or Intern):",
-    //     choices: ["Engineer", "Intern"]
-    // },
-    // {
-    //     type: "input",
-    //     message: "Enter:",
-    //     name: "tests"
-    // },
-    // {
-    //     type: "list",
-    //     message: "Select a license",
-    //     name: "license",
-    //     choices: [
-    //         "MIT",
-    //         "Apache",
-    //         "Eclipse Public",
-    //         "GNU General Public",
-    //         "Boost Software",
-    //     ]
-    // },
-    // {
-    //     type: "input",
-    //     message: "Enter GITHUB user name:",
-    //     name: "username"
-    // },
-    // {
-    //     type: "input",
-    //     message: "Enter email address:",
-    //     name: "email"
-    // }
+    
 
   
 
