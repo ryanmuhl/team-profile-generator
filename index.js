@@ -77,7 +77,7 @@ const employee = () => {
           //Generate HTML
           case "No Additional Employees":
               console.log(myTeamArray)
-              generateHTML ()
+              fs.writeFile('./dist/team.html'), generateHTML(myTeamArray), ()=>console.log('Done!');
             }
           })
         }
