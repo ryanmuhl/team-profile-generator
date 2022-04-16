@@ -13,10 +13,11 @@ const Employee = require ("./lib/Employee.js");
 const Engineer = require ("./lib/Engineer.js");
 const Intern = require ("./lib/Intern.js");
 const Manager = require ("./lib/Manager.js");
-const { generateKey } = require("crypto");
+const generateHTML = require ("./src/generateHTML.js")
+
 
 //File Name/type to be generated after promts are answered
-const fileName = "index.html";
+const fileName = "team.html";
 
 const myTeamArray = [];
 
@@ -45,7 +46,13 @@ function manager () {
         message: "Enter Managers Office Number:",
         name: "officenumber"
     },
-]);
+
+    //Pushes manager to array then loops back to start of questions
+]).then(({name, id, email, officenumber}) =>
+    {
+
+        myTeamArray.push(new Manager (name, id, email, officenumber ))
+    }).then(employee)
 
 };
 
@@ -56,23 +63,28 @@ const employee = () => {
       type: "list",
       message: "Select Employee role (Engineer or Intern):",
       name: "role",
-      choices: ["Engineer", "Intern", "No Additional Employees"]
+      choices: ["Manager", "Engineer", "Intern", "No Additional Employees"]
     }]).then(function (input) {
       switch(input.role) {
-        case "Engineer":
-          engineer();
-          break;
-        case "Intern":
-          intern();
-          break;
-
-        default:
-          console.log("Generate HTML")
+          case "Manager":
+          return manager()
+          case "Engineer":
+          return engineer();
+          case "Intern":
+          return intern();
+          
+          //If No Additional Employees Selected console log Team array
+          //Generate HTML
+          case "No Additional Employees":
+              console.log(myTeamArray)
+              generateHTML ()
+            }
+          })
+        }
+              
+           
         
-      }
-    })
-  }
-
+//engineer inquirer propt questions
 const engineer = () => {  
 
     inquirer.prompt ([
@@ -96,9 +108,17 @@ const engineer = () => {
         message: "Enter Engineer GitHub:",
         name: "github"
     },
-]);
+
+    //Pushes Engineer to array then loops back to start of questions
+]).then(({name, id, email, github}) =>
+{
+
+    myTeamArray.push(new Engineer (name, id, email, github ))
+}).then(employee)
 };
 
+
+//intern inquirer propt questions
 const intern = () => {  
 
     inquirer.prompt ([
@@ -122,15 +142,37 @@ const intern = () => {
         message: "Enter Intern School:",
         name: "school"
     },
-]);
+    //Pushes Intern to array then loops back to start of questions
+]).then(({name, id, email, school}) =>
+{
+
+    myTeamArray.push(new Intern (name, id, email, school ))
+}).then(employee)
 };
 
 
-manager()
-// .catch(err => {
-//     console.log(err);
-//      });
 
+
+// function writeToFile(fileName, data) {
+    
+
+//     const html = generateHTML(data);
+    
+//     fs.writeFile(fileName, html, function (err) {
+//         if (err) throw err;
+//         console.log("Success!");
+//     });
+// }
+
+// function init () {
+
+//     .then(function(data){
+//         writeToFile(fileName,data)
+//     })
+// }
+
+
+employee ()
 
 
     
