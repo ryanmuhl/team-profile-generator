@@ -9,7 +9,7 @@ const inquirer = require("inquirer");
 //Import the `fs` module to enable interaction with the file system
 const fs = require("fs");
 
-const Employee = require ("./lib/Employee.js");
+// const Employee = require ("./lib/Employee.js");
 const Engineer = require ("./lib/Engineer.js");
 const Intern = require ("./lib/Intern.js");
 const Manager = require ("./lib/Manager.js");
@@ -77,7 +77,8 @@ const employee = () => {
           //Generate HTML
           case "No Additional Employees":
               console.log(myTeamArray)
-              fs.writeFile('./dist/team.html'), generateHTML(myTeamArray), ()=>console.log('Done!');
+            //   fs.writeFile('./dist/team.html'), generateHTML(myTeamArray), ()=>console.log('Done!');
+            htmlBuilder ()
             }
           })
         }
@@ -140,39 +141,25 @@ const intern = () => {
     {
         type: "input",
         message: "Enter Intern School:",
-        name: "school"
+        name: "university"
     },
     //Pushes Intern to array then loops back to start of questions
-]).then(({name, id, email, school}) =>
+]).then(({name, id, email, university}) =>
 {
 
-    myTeamArray.push(new Intern (name, id, email, school ))
+    myTeamArray.push(new Intern (name, id, email, university ))
 }).then(employee)
 };
 
 
-
-
-// function writeToFile(fileName, data) {
-    
-
-//     const html = generateHTML(data);
-    
-//     fs.writeFile(fileName, html, function (err) {
-//         if (err) throw err;
-//         console.log("Success!");
-//     });
-// }
-
-// function init () {
-
-//     .then(function(data){
-//         writeToFile(fileName,data)
-//     })
-// }
-
-
 employee ()
+
+function htmlBuilder () {
+    console.log("Team created!")
+
+    fs.writeFileSync('./dist/team.html', generateHTML(myTeamArray))
+
+}
 
 
     
