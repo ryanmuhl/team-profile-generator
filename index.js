@@ -15,10 +15,6 @@ const Intern = require ("./lib/Intern.js");
 const Manager = require ("./lib/Manager.js");
 const generateHTML = require ("./src/generateHTML.js")
 
-
-//File Name/type to be generated after promts are answered
-const fileName = "team.html";
-
 const myTeamArray = [];
 
 
