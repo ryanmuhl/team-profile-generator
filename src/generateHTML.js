@@ -11,6 +11,7 @@ const generateManager = manager => {
         <h2>${manager.getRole()}</h2>
     </div>
         <h3>ID: ${manager.getId()}</h3>
+        <h3>Email:</h3><a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a>
         <h3>OFFICE#: ${manager.getOffice()}</h3>
 
 </div>
@@ -29,14 +30,15 @@ const generateEngineer = engineer => {
                 </div>
     
             <h3>ID: ${engineer.getId()}</h3>
-                <h3>Git Hub: ${engineer.getGithub()}</h3>
+            <h3>Email:</h3> <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a>
+            <h3>Git Hub:</h3> <a href="${engineer.getGithub()}"> ${engineer.getGithub()}</a>
         </div>
     `
 }
 
-const generateIntern = intern => {
+     function generateIntern(intern) {
 
-    return`
+         return `
     <div class="card">
             <div class="banner">
             <i class="fa-thin fa-atom-simple"></i>
@@ -45,10 +47,11 @@ const generateIntern = intern => {
                 </div>
     
             <h3>ID: ${intern.getId()}</h3>
-                <h3>Git Hub: ${intern.getEmail()}</h3>
+            <h3>Email:</h3><a href="mailto:${intern.getEmail()}">${intern.getEmail()}</a>
+                <h3>University: ${intern.getUniversity()}</h3>
         </div>
-    `
-}
+    `;
+     }
 
 const html = [];
 
@@ -96,7 +99,7 @@ return `
     
 </body>
 </html>
-;`
+`
 
 }
 
