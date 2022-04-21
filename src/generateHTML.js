@@ -1,7 +1,7 @@
  generateHTML = data => {
 
 
-    return `
+    output =  `
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -17,51 +17,75 @@
     <body>
         <Header class="header">MY TEAM</Header>
     
-        <Section>
-            <div class="card">
-                <div class="banner">
-                    <i class="fa-thin fa-alien-8bit"></i>
-                    <h3>${data[0].name}</h3>
-                    <h2>Manager</h2>
-                </div>
-                    <h3>ID: ${data[0].id}</h3>
-                    <h3>Email: ${data[0].email}</h3>
-                    <h3>Office Number: ${data[0].officenumber}</h3>
-    
+        <Section>`
+
+
+    for (let i = 0; i < data.Man.length; i++) {
+        const mgr = data.Man[i];
+
+        output += 
+        `<div class="card">
+            <div class="banner">
+                <i class="fa-thin fa-alien-8bit"></i>
+                <h3>${mgr.name}</h3>
+                <h2>Manager</h2>
             </div>
-    
-            <div class="card">
-                <div class="banner">
-                <i class="fa-thin fa-atom-simple"></i>
-                <h3>${data[1].name}</h3>
-                    <h2>Engineer</h2>
-                    </div>
+                <h3>ID: ${mgr.id}</h3>
+                <h3>Email: ${mgr.email}</h3>
+                <h3>Office Number: ${mgr.officenumber}</h3>
+        </div>`
+    }
+
+    output += '</Section><Section>';
+
+    for (let i = 0; i < data.Eng.length; i++) {
+        const eng = data.Eng[i];
         
-                <h3>ID: ${data[1].id}</h3>
-                    <h3>Email: ${data[1].email}</h3>
-                    <h3>Git Hub: ${data[1].github}</h3>
-            </div>
+    output +=
+    `<div class="card">
+    <div class="banner">
+    <i class="fa-thin fa-atom-simple"></i>
+    <h3>${eng.name}</h3>
+        <h2>Engineer</h2>
+        </div>
+
+    <h3>ID: ${eng.id}</h3>
+        <h3>Email: ${eng.email}</h3>
+        <h3>Git Hub: ${eng.github}</h3>
+</div> `
+    }
+
+   output += '</Section><Section>';
+
+   for (let i = 0; i < data.Int.length; i++) {
+    const intrn = data.Int[i];
     
-    
-            <div class="card">
-                <div class="banner">
-                <i class="fa-thin fa-atom-simple"></i>
-                <h3>${data[2].name}</h3>
-                    <h2>Intern</h2>
-                    </div>
+output +=
+`<div class="card">
+<div class="banner">
+<i class="fa-thin fa-atom-simple"></i>
+<h3>${intrn.name}</h3>
+    <h2>Intern</h2>
+    </div>
+
+<h3>ID: ${intrn.id}</h3>
+    <h3>Email: ${intrn.email}</h3>
+    <h3>University: ${intrn.university}</h3>
+</div> `
+}
+
+output += '</Section><Section>';
+
+
         
-                <h3>ID: ${data[2].id}</h3>
-                    <h3>Email: ${data[2].email}</h3>
-                    <h3>School: ${data[2].university}</h3>
-            </div>
-            
-        </Section>
+       ` </Section>
         
     </body>
     </html>
     
     `
 }
+
 
 module.exports = generateHTML;
 

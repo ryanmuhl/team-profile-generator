@@ -15,7 +15,10 @@ const Intern = require ("./lib/Intern.js");
 const Manager = require ("./lib/Manager.js");
 const generateHTML = require ("./src/generateHTML.js")
 
-const myTeamArray = [];
+
+
+
+const myTeamArray = {Man:[],Eng:[],Int:[]};
 
 
 // Function to trigger manager prompts
@@ -47,7 +50,7 @@ function manager () {
 ]).then(({name, id, email, officenumber}) =>
     {
 
-        myTeamArray.push(new Manager (name, id, email, officenumber ))
+        myTeamArray.Man.push(new Manager (name, id, email, officenumber ))
     }).then(employee)
 
 };
@@ -73,7 +76,7 @@ const employee = () => {
           //Generate HTML
           case "No Additional Employees":
               console.log(myTeamArray)
-            //   fs.writeFile('./dist/team.html'), generateHTML(myTeamArray), ()=>console.log('Done!');
+        
             htmlBuilder ()
             }
           })
@@ -110,7 +113,7 @@ const engineer = () => {
 ]).then(({name, id, email, github}) =>
 {
 
-    myTeamArray.push(new Engineer (name, id, email, github ))
+    myTeamArray.Eng.push(new Engineer (name, id, email, github ))
 }).then(employee)
 };
 
@@ -143,7 +146,7 @@ const intern = () => {
 ]).then(({name, id, email, university}) =>
 {
 
-    myTeamArray.push(new Intern (name, id, email, university ))
+    myTeamArray.Int.push(new Intern (name, id, email, university ))
 }).then(employee)
 };
 
@@ -152,8 +155,9 @@ employee ()
 
 function htmlBuilder () {
     console.log("Team created!")
-
+    
     fs.writeFileSync('./dist/team.html', generateHTML(myTeamArray))
+    
 
 }
 
