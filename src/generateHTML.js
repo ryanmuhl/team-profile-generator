@@ -1,93 +1,107 @@
  generateHTML = data => {
 
 
-    output =  `
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="style.css">
-        <title>My Team</title>
-    </head>
-    
-    
-    <body>
-        <Header class="header">MY TEAM</Header>
-    
-        <Section>`
+const generateManager = manager => {
 
-
-    for (let i = 0; i < data.Man.length; i++) {
-        const mgr = data.Man[i];
-
-        output += 
-        `<div class="card">
-            <div class="banner">
-                <i class="fa-thin fa-alien-8bit"></i>
-                <h3>${mgr.name}</h3>
-                <h2>Manager</h2>
-            </div>
-                <h3>ID: ${mgr.id}</h3>
-                <h3>Email: ${mgr.email}</h3>
-                <h3>Office Number: ${mgr.officenumber}</h3>
-        </div>`
-    }
-
-    output += '</Section><Section>';
-
-    for (let i = 0; i < data.Eng.length; i++) {
-        const eng = data.Eng[i];
-        
-    output +=
-    `<div class="card">
+    return `
+    <div class="card">
     <div class="banner">
-    <i class="fa-thin fa-atom-simple"></i>
-    <h3>${eng.name}</h3>
-        <h2>Engineer</h2>
-        </div>
-
-    <h3>ID: ${eng.id}</h3>
-        <h3>Email: ${eng.email}</h3>
-        <h3>Git Hub: ${eng.github}</h3>
-</div> `
-    }
-
-   output += '</Section><Section>';
-
-   for (let i = 0; i < data.Int.length; i++) {
-    const intrn = data.Int[i];
-    
-output +=
-`<div class="card">
-<div class="banner">
-<i class="fa-thin fa-atom-simple"></i>
-<h3>${intrn.name}</h3>
-    <h2>Intern</h2>
+        <i class="fa-thin fa-alien-8bit"></i>
+        <h3>${manager.getName()}</h3>
+        <h2>${manager.getRole()}</h2>
     </div>
+        <h3>ID: ${manager.getId()}</h3>
+        <h3>OFFICE#: ${manager.getOffice()}</h3>
 
-<h3>ID: ${intrn.id}</h3>
-    <h3>Email: ${intrn.email}</h3>
-    <h3>University: ${intrn.university}</h3>
-</div> `
+</div>
+`;
+
 }
 
-output += '</Section><Section>';
+const generateEngineer = engineer => {
 
-
-        
-       ` </Section>
-        
-    </body>
-    </html>
+    return`
+    <div class="card">
+            <div class="banner">
+            <i class="fa-thin fa-atom-simple"></i>
+            <h3>${engineer.getName()}</h3>
+                <h2>${engineer.getRole()}</h2>
+                </div>
     
+            <h3>ID: ${engineer.getId()}</h3>
+                <h3>Git Hub: ${engineer.getGithub()}</h3>
+        </div>
     `
 }
 
+const generateIntern = intern => {
 
-module.exports = generateHTML;
+    return`
+    <div class="card">
+            <div class="banner">
+            <i class="fa-thin fa-atom-simple"></i>
+            <h3>${intern.getName()}</h3>
+                <h2>${intern.getRole()}</h2>
+                </div>
+    
+            <h3>ID: ${intern.getId()}</h3>
+                <h3>Git Hub: ${intern.getEmail()}</h3>
+        </div>
+    `
+}
+
+const html = [];
+
+html.push(data
+    .filter(employee => employee.getRole() === "Manager")
+    .map(manager => generateManager(manager))
+);
+html.push(data
+    .filter(employee => employee.getRole() === "Engineer")
+    .map(engineer => generateEngineer(engineer))
+    .join("")
+);
+html.push(data
+    .filter(employee => employee.getRole() === "Intern")
+    .map(intern => generateIntern(intern))
+    .join("")
+);
+
+return html.join("");
+
+}
+
+module.exports = data => {
+return `
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"> -->
+    <title>My Team</title>
+</head>
+
+
+<body>
+    <Header class="header">MY TEAM</Header>
+
+    <Section>
+        ${generateHTML(data)}
+        
+    </Section>
+    
+</body>
+</html>
+;`
+
+}
+
+
+
 
 
 

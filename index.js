@@ -18,7 +18,7 @@ const generateHTML = require ("./src/generateHTML.js")
 
 
 
-const myTeamArray = {Man:[],Eng:[],Int:[]};
+const myTeamArray = []
 
 
 // Function to trigger manager prompts
@@ -50,7 +50,7 @@ function manager () {
 ]).then(({name, id, email, officenumber}) =>
     {
 
-        myTeamArray.Man.push(new Manager (name, id, email, officenumber ))
+        myTeamArray.push(new Manager (name, id, email, officenumber ))
     }).then(employee)
 
 };
@@ -113,7 +113,7 @@ const engineer = () => {
 ]).then(({name, id, email, github}) =>
 {
 
-    myTeamArray.Eng.push(new Engineer (name, id, email, github ))
+    myTeamArray.push(new Engineer (name, id, email, github ))
 }).then(employee)
 };
 
@@ -146,7 +146,7 @@ const intern = () => {
 ]).then(({name, id, email, university}) =>
 {
 
-    myTeamArray.Int.push(new Intern (name, id, email, university ))
+    myTeamArray.push(new Intern (name, id, email, university ))
 }).then(employee)
 };
 
