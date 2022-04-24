@@ -24,6 +24,15 @@ Generate a webpage that displays my team's basic info so that I have quick acces
 * HTML
 * CSS
 
+## Installation/Run instructions
+* npm init (Terminal)
+* npm install (Terminal)
+* npm install jest (Terminal)
+* npm install inquirer (Terminal)
+
+* Select the index.js file, right click and open in integrated terminal
+* Type node index.js in integrated terminal to start prompts
+
 ## Repository
 https://github.com/ryanmuhl/team-profile-generator
 

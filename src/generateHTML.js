@@ -1,9 +1,9 @@
- generateHTML = data => {
+generateHTML = data => {
 
+    //Generate Manager Card
+    const generateManager = manager => {
 
-const generateManager = manager => {
-
-    return `
+        return `
     <div class="card">
     <div class="banner">
         <i class="fa-thin fa-alien-8bit"></i>
@@ -17,11 +17,11 @@ const generateManager = manager => {
 </div>
 `;
 
-}
+    }
+    //Generate Engineer Card
+    const generateEngineer = engineer => {
 
-const generateEngineer = engineer => {
-
-    return`
+        return `
     <div class="card">
             <div class="banner">
             <i class="fa-thin fa-atom-simple"></i>
@@ -34,11 +34,12 @@ const generateEngineer = engineer => {
             <h3>Git Hub:</h3> <a href="https://github.com/${engineer.getGithub()}"> ${engineer.getGithub()}</a>
         </div>
     `
-}
+    }
 
-     function generateIntern(intern) {
+    //Generate Intern Card
+    function generateIntern(intern) {
 
-         return `
+        return `
     <div class="card">
             <div class="banner">
             <i class="fa-thin fa-atom-simple"></i>
@@ -51,31 +52,33 @@ const generateEngineer = engineer => {
                 <h3>University: ${intern.getUniversity()}</h3>
         </div>
     `;
-     }
+    }
 
-const html = [];
+    //define html array to push employee cards
+    const html = [];
 
-html.push(data
-    .filter(employee => employee.getRole() === "Manager")
-    .map(manager => generateManager(manager))
-);
-html.push(data
-    .filter(employee => employee.getRole() === "Engineer")
-    .map(engineer => generateEngineer(engineer))
-    .join("")
-);
-html.push(data
-    .filter(employee => employee.getRole() === "Intern")
-    .map(intern => generateIntern(intern))
-    .join("")
-);
+    html.push(data
+        .filter(employee => employee.getRole() === "Manager")
+        .map(manager => generateManager(manager))
+    );
+    html.push(data
+        .filter(employee => employee.getRole() === "Engineer")
+        .map(engineer => generateEngineer(engineer))
+        .join("")
+    );
+    html.push(data
+        .filter(employee => employee.getRole() === "Intern")
+        .map(intern => generateIntern(intern))
+        .join("")
+    );
 
-return html.join("");
+    return html.join("");
 
 }
 
+
 module.exports = data => {
-return `
+    return `
     <!DOCTYPE html>
 <html lang="en">
 <head>
