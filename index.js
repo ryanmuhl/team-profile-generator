@@ -105,7 +105,7 @@ const engineer = () => {
     },
     {
         type: "input",
-        message: "Enter Engineer GitHub:",
+        message: "Enter Engineer GitHub Username:",
         name: "github"
     },
 
