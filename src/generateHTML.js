@@ -31,7 +31,7 @@ const generateEngineer = engineer => {
     
             <h3>ID: ${engineer.getId()}</h3>
             <h3>Email:</h3> <a href="mailto:${engineer.getEmail()}">${engineer.getEmail()}</a>
-            <h3>Git Hub:</h3> <a href="${engineer.getGithub()}"> ${engineer.getGithub()}</a>
+            <h3>Git Hub:</h3> <a href="https://github.com/${engineer.getGithub()}"> ${engineer.getGithub()}</a>
         </div>
     `
 }
