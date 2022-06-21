@@ -37,7 +37,10 @@ Generate a webpage that displays my team's basic info so that I have quick acces
 https://github.com/ryanmuhl/team-profile-generator
 
 ## Screencastify video link
-https://drive.google.com/file/d/1hvlTMxrxIhPVWxCzsYxWe-FCnEj0_VwA/view
+
+https://drive.google.com/file/d/1hvlTMxrxIhPVWxCzsYxWe-FCnEj0_VwA/view (video showing functional application)
+
+https://drive.google.com/file/d/1gBb6ZCAR42fcIMvSGjSP4alGQr8pF7Jz/view (video showing passing tests)
 
 
 ## Contribution
